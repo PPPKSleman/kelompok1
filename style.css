@@ -249,63 +249,130 @@ body{
 }
 
 /* =========================
-   MOBILE RESPONSIVE NAV
+   MOBILE NAVBAR FIX
 ========================= */
+
+.menu-toggle{
+  display:none;
+  width:50px;
+  height:50px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  position:relative;
+  z-index:1001;
+}
+
+.menu-toggle span{
+  display:block;
+  width:28px;
+  height:3px;
+  margin:6px auto;
+  border-radius:999px;
+  background:#fff;
+  transition:.4s ease;
+}
+
+body.light .menu-toggle span{
+  background:#111827;
+}
+
+/* ANIMATION */
+
+.menu-toggle.active span:nth-child(1){
+  transform:
+    translateY(9px)
+    rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+  transform:
+    translateY(-9px)
+    rotate(-45deg);
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
   .navbar{
-    flex-direction:row;
+    height:80px;
+    display:flex;
     justify-content:space-between;
-    padding:20px 0;
+    align-items:center;
+    flex-direction:row;
   }
 
   .menu-toggle{
-    display:flex;
+    display:block;
   }
 
   .nav-menu{
-    position:absolute;
-    top:100%;
+    position:fixed;
+    top:80px;
     left:0;
+
     width:100%;
+    height:auto;
 
+    display:flex;
     flex-direction:column;
+    justify-content:center;
     align-items:center;
-    gap:20px;
 
-    padding:30px;
+    gap:24px;
+
+    padding:40px 20px;
 
     background:
-      rgba(10,10,25,.92);
+      rgba(7,17,31,.96);
 
     backdrop-filter:
-      blur(20px);
+      blur(25px);
 
     border-bottom:
       1px solid
-      rgba(255,255,255,.1);
+      rgba(255,255,255,.08);
 
     transform:
-      translateY(-20px);
+      translateY(-120%);
 
     opacity:0;
     visibility:hidden;
 
-    transition:.4s ease;
+    transition:.45s ease;
+
+    z-index:999;
+  }
+
+  body.light .nav-menu{
+    background:
+      rgba(255,255,255,.95);
   }
 
   .nav-menu.active{
+    transform:translateY(0);
     opacity:1;
     visibility:visible;
-    transform:translateY(0);
+  }
+
+  .nav-menu li{
+    list-style:none;
+  }
+
+  .nav-menu a{
+    font-size:1.1rem;
+    font-weight:600;
   }
 
   .hero{
     padding-top:120px;
   }
 }
-
 /* =========================
    HERO
 ========================= */
