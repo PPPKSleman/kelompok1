@@ -356,54 +356,54 @@ timelineItems.forEach(item=>{
     ".9s ease";
 });
 
-// ============================
-// MOBILE MENU
-// ============================
+// ======================
+// MOBILE NAVIGATION FIX
+// ======================
 
-const menuToggle =
-  document.getElementById(
-    "menuToggle"
-  );
-
-const navMenu =
-  document.querySelector(
-    ".nav-menu"
-  );
-
-menuToggle.addEventListener(
-  "click",
-  ()=>{
-
-    navMenu.classList.toggle(
-      "active"
-    );
-
-    menuToggle.classList.toggle(
-      "active"
-    );
-  }
+const menuBtn =
+document.getElementById(
+"menuToggle"
 );
 
+const navMenu =
+document.querySelector(
+".nav-menu"
+);
 
-// AUTO CLOSE MENU
+menuBtn.addEventListener(
+"click",
+function(){
+
+  navMenu.classList.toggle(
+    "active"
+  );
+
+  menuBtn.classList.toggle(
+    "active"
+  );
+});
+
+
+// AUTO CLOSE
 
 document
 .querySelectorAll(
-  ".nav-menu a"
+".nav-menu a"
 )
 .forEach(link=>{
 
   link.addEventListener(
-    "click",
-    ()=>{
+  "click",
+  ()=>{
 
-      navMenu.classList.remove(
-        "active"
-      );
+    navMenu.classList.remove(
+      "active"
+    );
 
-      menuToggle.classList.remove(
-        "active"
-      );
-    }
-  );
+    menuBtn.classList.remove(
+      "active"
+    );
+
+  });
+
 });
