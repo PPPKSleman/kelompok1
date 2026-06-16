@@ -311,51 +311,70 @@ body.light .menu-toggle span{
     display:block;
   }
 
-  .nav-menu{
+  /* Backdrop behind the drawer, dims the page instead of the
+     menu swallowing the entire hero */
+  .nav-overlay{
     position:fixed;
-    top:80px;
-    left:0;
+    inset:0;
 
-    width:100%;
-    height:auto;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    gap:24px;
-
-    padding:40px 20px;
-
-    background:
-      rgba(7,17,31,.96);
-
-    backdrop-filter:
-      blur(25px);
-
-    border-bottom:
-      1px solid
-      rgba(255,255,255,.08);
-
-    transform:
-      translateY(-120%);
+    background:rgba(4,8,18,.55);
+    backdrop-filter:blur(3px);
 
     opacity:0;
     visibility:hidden;
 
-    transition:.45s ease;
+    transition:opacity .4s ease, visibility .4s ease;
+
+    z-index:998;
+  }
+
+  .nav-overlay.active{
+    opacity:1;
+    visibility:visible;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:0;
+    right:0;
+
+    width:min(76%,320px);
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch;
+
+    gap:4px;
+
+    padding:110px 32px 40px;
+
+    background:rgba(8,14,27,.97);
+
+    backdrop-filter:blur(25px);
+
+    border-left:1px solid rgba(255,255,255,.1);
+    box-shadow:-25px 0 60px rgba(0,0,0,.35);
+
+    transform:translateX(100%);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:transform .45s cubic-bezier(.4,0,.2,1),
+               opacity .4s ease,
+               visibility .4s ease;
 
     z-index:999;
   }
 
   body.light .nav-menu{
-    background:
-      rgba(255,255,255,.95);
+    background:rgba(255,255,255,.97);
   }
 
   .nav-menu.active{
-    transform:translateY(0);
+    transform:translateX(0);
     opacity:1;
     visibility:visible;
   }
@@ -365,8 +384,32 @@ body.light .menu-toggle span{
   }
 
   .nav-menu a{
-    font-size:1.1rem;
+    display:flex;
+    align-items:center;
+
+    width:100%;
+    padding:16px 4px;
+
+    font-size:1.05rem;
     font-weight:600;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+
+  body.light .nav-menu a{
+    border-bottom:1px solid rgba(17,24,39,.08);
+  }
+
+  .nav-menu li:last-child a{
+    border-bottom:none;
+  }
+
+  .nav-menu a::after{
+    display:none;
+  }
+
+  body.menu-open{
+    overflow:hidden;
   }
 
   .hero{
@@ -921,21 +964,8 @@ body.light .menu-toggle span{
 
 @media(max-width:768px){
 
-  .navbar{
-    flex-direction:column;
-    height:auto;
-    padding:20px 0;
-    gap:20px;
-  }
-
-  .nav-menu{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-  }
-
   .hero{
-    padding-top:160px;
+    padding-top:140px;
   }
 
   .hero h1{
