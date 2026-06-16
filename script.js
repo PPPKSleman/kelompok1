@@ -355,3 +355,55 @@ timelineItems.forEach(item=>{
   item.style.transition =
     ".9s ease";
 });
+
+// ============================
+// MOBILE MENU
+// ============================
+
+const menuToggle =
+  document.getElementById(
+    "menuToggle"
+  );
+
+const navMenu =
+  document.querySelector(
+    ".nav-menu"
+  );
+
+menuToggle.addEventListener(
+  "click",
+  ()=>{
+
+    navMenu.classList.toggle(
+      "active"
+    );
+
+    menuToggle.classList.toggle(
+      "active"
+    );
+  }
+);
+
+
+// AUTO CLOSE MENU
+
+document
+.querySelectorAll(
+  ".nav-menu a"
+)
+.forEach(link=>{
+
+  link.addEventListener(
+    "click",
+    ()=>{
+
+      navMenu.classList.remove(
+        "active"
+      );
+
+      menuToggle.classList.remove(
+        "active"
+      );
+    }
+  );
+});
