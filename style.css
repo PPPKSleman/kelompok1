@@ -205,6 +205,108 @@ body{
 }
 
 /* =========================
+   MOBILE MENU
+========================= */
+
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+
+  background:none;
+  border:none;
+
+  cursor:pointer;
+}
+
+.menu-toggle span{
+  width:28px;
+  height:3px;
+
+  border-radius:20px;
+
+  background:white;
+
+  transition:.4s;
+}
+
+/* ACTIVE */
+
+.menu-toggle.active span:nth-child(1){
+  transform:
+    rotate(45deg)
+    translateY(12px);
+}
+
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+  transform:
+    rotate(-45deg)
+    translateY(-12px);
+}
+
+/* =========================
+   MOBILE RESPONSIVE NAV
+========================= */
+
+@media(max-width:768px){
+
+  .navbar{
+    flex-direction:row;
+    justify-content:space-between;
+    padding:20px 0;
+  }
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+
+    padding:30px;
+
+    background:
+      rgba(10,10,25,.92);
+
+    backdrop-filter:
+      blur(20px);
+
+    border-bottom:
+      1px solid
+      rgba(255,255,255,.1);
+
+    transform:
+      translateY(-20px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.4s ease;
+  }
+
+  .nav-menu.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+}
+
+/* =========================
    HERO
 ========================= */
 
