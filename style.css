@@ -166,6 +166,10 @@ body{
   list-style:none;
 }
 
+.nav-theme-mobile{
+  display:none;
+}
+
 .nav-menu a{
   text-decoration:none;
   color:var(--text);
@@ -202,6 +206,12 @@ body{
 
 .theme-btn:hover{
   transform:rotate(20deg) scale(1.08);
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
 /* =========================
@@ -311,6 +321,21 @@ body.light .menu-toggle span{
     display:block;
   }
 
+  .nav-actions{
+    gap:4px;
+  }
+
+  .theme-btn{
+    width:44px;
+    height:44px;
+    font-size:1.15rem;
+  }
+
+  .menu-toggle{
+    width:44px;
+    height:44px;
+  }
+
   /* Backdrop behind the drawer, dims the page instead of the
      menu swallowing the entire hero */
   .nav-overlay{
@@ -381,6 +406,31 @@ body.light .menu-toggle span{
 
   .nav-menu li{
     list-style:none;
+  }
+
+  .nav-theme-mobile{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:12px 4px;
+    margin-bottom:8px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+
+  body.light .nav-theme-mobile{
+    border-bottom:1px solid rgba(17,24,39,.1);
+  }
+
+  .nav-theme-mobile span{
+    font-size:1rem;
+    font-weight:500;
+    color:var(--text-soft);
+  }
+
+  .theme-btn.mobile{
+    width:42px;
+    height:42px;
+    font-size:1.2rem;
   }
 
   .nav-menu a{
