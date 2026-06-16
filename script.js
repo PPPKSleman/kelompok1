@@ -73,39 +73,32 @@ if(savedTheme === "light"){
   themeToggle.innerHTML = "☀️";
 }
 
-themeToggle.addEventListener(
-  "click",
-  () => {
+function toggleTheme(){
 
-    document.body.classList.toggle(
-      "light"
-    );
+  document.body.classList.toggle("light");
 
-    if(
-      document.body.classList.contains(
-        "light"
-      )
-    ){
-      localStorage.setItem(
-        "theme",
-        "light"
-      );
+  const isLight = document.body.classList.contains("light");
 
-      themeToggle.innerHTML =
-        "☀️";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
 
-    } else {
+  const icon = isLight ? "☀️" : "🌙";
 
-      localStorage.setItem(
-        "theme",
-        "dark"
-      );
+  themeToggle.innerHTML = icon;
 
-      themeToggle.innerHTML =
-        "🌙";
-    }
+  const mobileToggle = document.getElementById("themeToggleMobile");
+  if(mobileToggle) mobileToggle.innerHTML = icon;
+}
+
+themeToggle.addEventListener("click", toggleTheme);
+
+const themeToggleMobile = document.getElementById("themeToggleMobile");
+if(themeToggleMobile){
+  themeToggleMobile.addEventListener("click", toggleTheme);
+
+  if(savedTheme === "light"){
+    themeToggleMobile.innerHTML = "☀️";
   }
-);
+}
 
 
 // ============================
