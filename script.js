@@ -370,18 +370,48 @@ document.querySelector(
 ".nav-menu"
 );
 
+const navOverlay =
+document.getElementById(
+"navOverlay"
+);
+
+function openMenu(){
+
+  navMenu.classList.add("active");
+  menuBtn.classList.add("active");
+  navOverlay.classList.add("active");
+
+  document.body.classList.add(
+    "menu-open"
+  );
+}
+
+function closeMenu(){
+
+  navMenu.classList.remove("active");
+  menuBtn.classList.remove("active");
+  navOverlay.classList.remove("active");
+
+  document.body.classList.remove(
+    "menu-open"
+  );
+}
+
 menuBtn.addEventListener(
 "click",
 function(){
 
-  navMenu.classList.toggle(
-    "active"
-  );
-
-  menuBtn.classList.toggle(
-    "active"
-  );
+  if(navMenu.classList.contains("active")){
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
+
+navOverlay.addEventListener(
+  "click",
+  closeMenu
+);
 
 
 // AUTO CLOSE
@@ -394,16 +424,7 @@ document
 
   link.addEventListener(
   "click",
-  ()=>{
-
-    navMenu.classList.remove(
-      "active"
-    );
-
-    menuBtn.classList.remove(
-      "active"
-    );
-
-  });
+  closeMenu
+  );
 
 });
