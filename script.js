@@ -128,7 +128,8 @@ function revealElements(){
 
 window.addEventListener(
   "scroll",
-  revealElements
+  revealElements,
+  {passive:true}
 );
 
 revealElements();
@@ -138,16 +139,18 @@ revealElements();
 // VANILLA TILT
 // ============================
 
-VanillaTilt.init(
-  document.querySelectorAll(".tilt"),
-  {
-    max:15,
-    speed:500,
-    glare:true,
-    "max-glare":0.2,
-    scale:1.03
-  }
-);
+if(window.innerWidth > 768){
+  VanillaTilt.init(
+    document.querySelectorAll(".tilt"),
+    {
+      max:15,
+      speed:500,
+      glare:true,
+      "max-glare":0.2,
+      scale:1.03
+    }
+  );
+}
 
 
 // ============================
@@ -189,7 +192,8 @@ window.addEventListener(
         scrollY * 0.05
       }px)`;
 
-  }
+  },
+  {passive:true}
 );
 
 
@@ -225,7 +229,8 @@ window.addEventListener(
       header.style.boxShadow =
         "none";
     }
-  }
+  },
+  {passive:true}
 );
 
 
@@ -267,48 +272,28 @@ document
 // HERO FLOAT EFFECT
 // ============================
 
-const heroCard =
-  document.querySelector(
-    ".hero-card"
-  );
+if(window.innerWidth > 768){
+  const heroCard = document.querySelector(".hero-card");
 
-window.addEventListener(
-  "mousemove",
-  (e)=>{
-
-    const x =
-      (window.innerWidth / 2
-      - e.pageX) / 40;
-
-    const y =
-      (window.innerHeight / 2
-      - e.pageY) / 40;
-
+  window.addEventListener("mousemove", (e)=>{
+    const x = (window.innerWidth / 2 - e.pageX) / 40;
+    const y = (window.innerHeight / 2 - e.pageY) / 40;
     heroCard.style.transform =
-      `translateY(-8px)
-       rotateY(${x}deg)
-       rotateX(${-y}deg)`;
-  }
-);
+      `translateY(-8px) rotateY(${x}deg) rotateX(${-y}deg)`;
+  });
+}
 
 
 // ============================
 // LOADING ANIMATION
 // ============================
 
-window.addEventListener(
-  "load",
-  ()=>{
-
-    document.body.style.opacity =
-      "1";
-
-    document.body.style.transition =
-      "opacity .8s ease";
-  }
-);
-
 document.body.style.opacity = "0";
+document.body.style.transition = "opacity .8s ease";
+
+requestAnimationFrame(()=>{
+  document.body.style.opacity = "1";
+});
 
 
 // ============================
@@ -337,7 +322,8 @@ window.addEventListener(
           "translateY(0)";
       }
     });
-  }
+  },
+  {passive:true}
 );
 
 timelineItems.forEach(item=>{
